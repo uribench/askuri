@@ -1,10 +1,23 @@
 # YL620 VFD by Ya Lang
 
+## Table of Content (TOC)
+
+- [Setting Parameters](#setting-parameters)
+- [Restore Factory Defaults](#restore-factory-defaults)
+- [Controlling a Single Phase Motor](#controlling-a-single-phase-motor)
+- [Jog Mode](#jog-mode)
+- [Displaying RPM](#displaying-rpm)
+- [Calculating the RMP/Frequency Ratio](#calculating-the-rmpfrequency-ratio)
+- [Calculating Torque](#calculating-torque)
+- [Using a Stroboscope to Measure RPM](#using-a-stroboscope-to-measure-rpm)
+- [Breaking Resistor](#breaking-resistor)
+- [Open Questions](#open-questions)
+
 ## Setting Parameters
 
-To set a new value to a parameter follow next steps:
+To set a new value to a parameter follow the next steps:
 
-1. Press the `STOP` key to make sure the motor is stopped. The internal fan will work for short time. This allows the user to verify that the fan is functioning.
+1. Press the `STOP` key to make sure the motor is stopped. The internal fan will work for a short time. This allows the user to verify that the fan is functioning.
 2. Press the 'PRGM' key to enter the programming mode.
 3. Select the program group number (the first two digits after the `P`). Do that using the `DISP` (to scroll horizontally among the displayed digits) and `UP` and `DOWN` arrow keys to set the requested program group number.
 4. Select the parameter number for the selected group (the last two digits after the `P`). Do that as described in the previous step.
@@ -21,7 +34,7 @@ To set a new value to a parameter follow next steps:
 
 Note: If instead of committing the recent changes you would like to rollback to the current permanent parameters stored in the Inverter Controller:
 
-1. Exist the programming mode if Inverter is still in this mode.
+1. Exist the programming mode if the Inverter is still in this mode.
 2. Press the `STOP` key, keep it pressed, and then press the `DOWN` arrow key. The display will scroll through all the parameters and finally will display `d 1500` (i.e., `d` for upload and `1500` for the last parameter scanned), and lock all keys, except for the `PRGM` key. To return to normal mode press the `PRGM` key. You can now continue using the Inverter as usual.
 
 
@@ -38,6 +51,32 @@ Notes:
 1. When this value is set for restoring the factory defaults, the Inverter will not allow any other parameters setting.
 2. For this 'Restore Factory Default' action to take effect, the Inverter has to be restarted (i.e., see Option 1 above).
 3. Not all the parameters will be restored to factory settings. The manual refer to that as "electrical parameter not included...". **TBD:** The list of the protected custom parameters needs to be verified.
+
+
+## Controlling a Single Phase Motor
+
+The YL620 VFD (200VAC, 50Hz) is intended for use with a single phase input (Main Power) and three phase motor. The manual does not mention anything about supporting a single-phase motor.
+
+However, it can be connected to a capacitor-run single-phase induction motor with appropriate ratings. 
+
+Let's start by a brief introduction to capacitor-run single-phase induction motors.
+
+A capacitor-run single-phase induction motor has one capacitor, two windings (i.e., `starting` and `main` windings) mounted on the stator, and a cage winding placed on the rotor. 
+
+It may also have a centrifugal switch that disconnects the capacitor after the motor starts.
+
+Following is a typical connection diagram of a capacitor-run single-phase induction motor:
+
+![capacitor-run single-phase induction motor][7]
+
+Now that we understand how typical capacitor-run single-phase induction motors are connected, we will make the connection changes required to control it using a VFD with 3-Phase output.
+
+The following steps are needed in order to connect this type of motor to this VFD:
+
+- Remove the inner capacitor of the motor.
+- Connect the two windings of the motor (`starting` and `main` windings) to the U, V, and W outputs of the VFD as follows:
+
+![capacitor-run single-phase induction motor][8]
 
 
 ## Jog Mode
@@ -89,14 +128,7 @@ Note that also with P00.24 = 9 (display user variable), you can still scroll thr
 
 ### Numerical Examples
 
-The following examples were done with a YL620 VFD (200VAC, 50Hz) connected to a single-phase induction motor (220VAC, 50Hz). The inner capacitor of the motor was removed and the two windings of the motor (`start` and `main` windings) were connected to the U, V, and W outputs of the VFD as follows:
-
-```
-        main           start
-U x--/\/\/\/\/\--x--/\/\/\/\/\--x W
-                 |
-                 V
-```
+The following examples were done with a YL620 VFD (200VAC, 50Hz) connected to a small (200VAC, 50Hz, 0.17A) capacitor-run single-phase induction motor. See [Controlling a Single Phase Motor](#controlling-a-single-phase-motor) for details.
 
 The basic parameters for the following examples are:
 
@@ -207,6 +239,58 @@ As can be seen from the above table, the actual RPM is the one showing only one 
 
 For more details see this short article on [Using a Stroboscope to Measure RPM][6].
 
+## Breaking Resistor
+
+The optional breaking resistor consumes the regenerating energy of the motor and shorten the ramp-down time.
+
+The breaking resistor can be connected to the '+DB-' connectors of the Main circuit Terminals.
+
+### Resistor Parameters
+
+The following recommendations are based on the user's manual (YL620-A-Inverter-Manual.pdf):
+
+1. For inverter model YL620-1.5KW-220V, use 100W 100Ω resistor. This will support a 1.5KW motor.
+2. In order to prevent the braking resistor from burning out, please add an electromagnetic contactor and connect a surge absorber to the coil when using it.
+3. The surge absorber absorbs the switching surge current from the electromagnetic contactor and control relays.
+4. Be sure to consider the safety and ignitability of the environment when installing a braking resistor.The distance to the inverter should be at least 100 mm.
+
+### Programming the VFD for DC Breaking
+
+Based on the user's manual (YL620-A-Inverter-Manual.pdf):
+
+- Program group and number: P00.03
+- Possible Values:
+    - 0: Decelerating Stop (default)
+    - 1: Coasting Stop
+    - 2: DC Brake Stop
+
+Set the P00.03 program group and number to the value of 2. For details on how to do that, see the [Setting Parameters](#setting-parameters) section above.
+
+### Experiments
+
+As an experiment the following steps on were performed on a Ya Lang YL620 (200VAC, 50Hz) VFD:
+
+1. Preparations:
+    - Disconnect the VFD from power
+    - Connect a small (0.17A) capacitor-run single-phase induction motor (220VAC, 50Hz). For details see [Controlling a Single Phase Motor](#controlling-a-single-phase-motor)
+    - Put a flag marker (e.g., small tape) on the shaft of the motor to indicate its position
+    - Connect a common 60-100W 220V incandescent light bulb to the '+DB-' connectors of the Main circuit Terminals.
+    - Connect the VFD to power
+2. Check Stop Time **before** using the DC Barking mode:
+    - Check that the P00.03 is set to the default value of 0 
+    - Press `RUN` to start the motor and wait until the motor reaches its final speed
+    - Press `STOP` to stop the motor
+    - Make a mental note of how long it took the motor to stop (repeat the `RUN/STOP` cycle at different RPM)
+3. Check the Stop Time **after** using the DC Barking mode:
+    - Program the P00.03 to the value of 2
+    - Press `RUN` to start the motor
+    - Press `STOP` to stop the motor
+    - Watch the effect of the braking resistor (it should stop much faster with the braking resistor)
+
+The YL620 VFD supports several configurations to control the behavior of the DC Braking (e.g., P01.09-P01.15, P04.04, ). However, in this experiment, their default values were used. 
+
+Note also that the over current error message `ER02` has a dedicated value of `7` indicating: "DC braking is too high. Decrease DC braking".
+
 
 ## Open Questions
 
@@ -234,3 +318,5 @@ The following open questions are in addition to those on the parameters excel sh
 [4]: https://electronics.stackexchange.com/questions/346764/how-to-calculate-rpm-using-frequency
 [5]: https://www.engineeringtoolbox.com/synchronous-motor-frequency-speed-d_649.html
 [6]: https://monarchserver.com/Files/KB/Strobe_for_RPM.pdf?6383841973126740174
+[7]: ./images/capacitor-run_single-phase_induction_motor.jpg
+[8]: ./images/vfd-controlled_capacitor-run_single-phase_induction_motor.jpg
