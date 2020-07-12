@@ -296,19 +296,24 @@ Note also that the over current error message `ER02` has a dedicated value of `7
 
 The following open questions are in addition to those on the parameters excel sheet:
 
-1. How to switch the display of the VFD to show RPM? Asked also by agflex [in this forum][1] without a good answer.
+1. CLOSED: How to switch the display of the VFD to show RPM? Asked also by agflex [in this forum][1] without a good answer.
    **Answered:** Read he solution in the [Displaying RPM](#displaying-rpm) section above. 
    Note that I have posted this answer as a reply to the [question by agflex][1].
-2. How to measure and display the actual RPM (on the motor and on the end spindle of the lathe)? Will P00.24 with value of 6, 8, or 10 help?
+2. CLOSED: How to measure and display the actual RPM (on the motor and on the end spindle of the lathe)? Will P00.24 with value of 6, 8, or 10 help?
    **Answered:** Read he solution in the [Displaying RPM](#displaying-rpm) section above. 
-3. How to factor the gear ratio of the lathe in the display? Is P00.23 related to that?
+3. CLOSED: How to factor the gear ratio of the lathe in the display? Is P00.23 related to that?
    **Answered:** Read he solution in the [Displaying RPM](#displaying-rpm) section above. 
-4. What is the difference between P00.04 and P00.05?
-5. How to use the equations in the above [Calculating RPM and Torque](#calculating-torque) section in order to set the min and max output frequencies (P00.09 and P00.04) and the min and max displayed frequencies (P03.08 and P03.09)?
-6. How to avoid the long shutdown process of the Inverter that includes the persisting of the parameters? Locking the parameters by P00.13 didn't help.
-7. What impact have the value of the number of poles (P12.02) on the performance?
+4. OPEN: What is the difference between P00.04 and P00.05?
+5. OPEN: How to use the equations in the above [Calculating RPM and Torque](#calculating-torque) section in order to set the min and max output frequencies (P00.09 and P00.04) and the min and max displayed frequencies (P03.08 and P03.09)?
+6. OPEN: How to avoid the long shutdown process of the Inverter that includes the persisting of the parameters? Locking the parameters by P00.13 didn't help.
+7. OPEN: What impact has the value of the number of poles (P12.02) on the performance?
    I have modified the value of the number of poles (e.g., 2, 4, 8), when the LG AirCond Fan Motor was connected, and there was no visible impact on the running speed or the torque.
-8. How to mount the VFD next to the lathe while protecting it from dust?
+8. OPEN: How to mount the VFD next to the lathe while protecting it from dust?
+9. CLOSED: Can the DC Braking Resistor be disconnected while the VFD is set to support DC Brake Mode? I have tried it with a small (200VAC, 50Hz, 0.17A) capacitor-run single-phase induction motor and I have not noticed any damage to the VFD.
+10. CLOSED: How many wires are used to connect the detachable panel to the VFD? There are four wires marked as VCC, B, A, and GND.
+11. CLOSED: What is the power level of the detachable panel? The VFD provides 5V-DC to the panel.
+11. OPEN: What is the protocol used to connect the detachable panel to the VFD?
+12. OPEN: Can multiple detachable panels be connected to the same VFD?
 
 ---
 
