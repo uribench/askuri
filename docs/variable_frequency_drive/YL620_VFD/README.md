@@ -1,4 +1,4 @@
-# YL620 VFD by Ya Lang
+# YL620 Variable Frequency Drive (VFD) by Ya Lang
 
 ## Table of Content (TOC)
 
