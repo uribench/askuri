@@ -10,7 +10,7 @@
 - [Calculating the RMP/Frequency Ratio](#calculating-the-rmpfrequency-ratio)
 - [Calculating Torque](#calculating-torque)
 - [Using a Stroboscope to Measure RPM](#using-a-stroboscope-to-measure-rpm)
-- [Breaking Resistor](#breaking-resistor)
+- [Braking Resistor](#braking-resistor)
 - [Open Questions](#open-questions)
 
 ## Setting Parameters
@@ -239,11 +239,11 @@ As can be seen from the above table, the actual RPM is the one showing only one 
 
 For more details see this short article on [Using a Stroboscope to Measure RPM][6].
 
-## Breaking Resistor
+## Braking Resistor
 
-The optional breaking resistor consumes the regenerating energy of the motor and shorten the ramp-down time.
+The optional braking resistor consumes the regenerating energy of the motor and shorten the ramp-down time.
 
-The breaking resistor can be connected to the '+DB-' connectors of the Main circuit Terminals.
+The braking resistor can be connected to the '+DB-' connectors of the Main circuit Terminals.
 
 ### Resistor Parameters
 
@@ -254,7 +254,7 @@ The following recommendations are based on the user's manual (YL620-A-Inverter-M
 3. The surge absorber absorbs the switching surge current from the electromagnetic contactor and control relays.
 4. Be sure to consider the safety and ignitability of the environment when installing a braking resistor.The distance to the inverter should be at least 100 mm.
 
-### Programming the VFD for DC Breaking
+### Programming the VFD for DC Braking
 
 Based on the user's manual (YL620-A-Inverter-Manual.pdf):
 
@@ -308,7 +308,7 @@ The following open questions are in addition to those on the parameters excel sh
 6. OPEN: How to avoid the long shutdown process of the Inverter that includes the persisting of the parameters? Locking the parameters by P00.13 didn't help.
 7. OPEN: What impact has the value of the number of poles (P12.02) on the performance?
    I have modified the value of the number of poles (e.g., 2, 4, 8), when the LG AirCond Fan Motor was connected, and there was no visible impact on the running speed or the torque.
-8. OPEN: How to mount the VFD next to the lathe while protecting it from dust?
+8. OPEN: How to mount the VFD next to the lathe/mill while protecting it from harmful materials?
 9. CLOSED: Can the DC Braking Resistor be disconnected while the VFD is set to support DC Brake Mode? I have tried it with a small (200VAC, 50Hz, 0.17A) capacitor-run single-phase induction motor and I have not noticed any damage to the VFD.
 10. CLOSED: How many wires are used to connect the detachable panel to the VFD? There are four wires marked as VCC, B, A, and GND.
 11. CLOSED: What is the power level of the detachable panel? The VFD provides 5V-DC to the panel.
