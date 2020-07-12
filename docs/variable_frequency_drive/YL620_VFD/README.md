@@ -7,7 +7,7 @@
 - [Controlling a Single Phase Motor](#controlling-a-single-phase-motor)
 - [Jog Mode](#jog-mode)
 - [Displaying RPM](#displaying-rpm)
-- [Calculating the RMP/Frequency Ratio](#calculating-the-rmpfrequency-ratio)
+- [Calculating the RPM/Frequency Ratio](#calculating-the-rpmfrequency-ratio)
 - [Calculating Torque](#calculating-torque)
 - [Using a Stroboscope to Measure RPM](#using-a-stroboscope-to-measure-rpm)
 - [Braking Resistor](#braking-resistor)
@@ -108,13 +108,13 @@ The first (P00.23) is mandatory and the second (P00.24) is optional, as describe
 
 In order to display RPM, the ratio between the actual RPM and the Frequency, as provided by the VFD to the motor, at the point of interest (i.e., on the motor shaft or on the end spindle after a gear) needs to be known. This can be done by calculation (approximated by ignoring 'slip') or one-time measurement with an external device (accurate).
 
-See [Calculating the RMP/Frequency Ratio](#calculating-the-rpmfrequency-ratio) for details. 
+See [Calculating the RPM/Frequency Ratio](#calculating-the-rpmfrequency-ratio) for details. 
 
 The `RPM Strob` iOS App served me successfully to measure the actual RPM of my motor for several frequencies. See [Using a Stroboscope to Measure RPM](#using-a-stroboscope-to-measure-rpm) for details.
 
-Once we have the RMP/Frequency ratio, we can set it as percentage [%] in P00.23 (Display Proportion Constant).
+Once we have the RPM/Frequency ratio, we can set it as percentage [%] in P00.23 (Display Proportion Constant).
 
-If you have a gear and want to display the RPM of the final RPM of the spindle after the gear, then you need to multiple the RMP/Frequency ratio with the gear ratio and use the result to set P00.23 (Display Proportion Constant).
+If you have a gear and want to display the RPM of the final RPM of the spindle after the gear, then you need to multiple the RPM/Frequency ratio with the gear ratio and use the result to set P00.23 (Display Proportion Constant).
 
 ### Displaying the 'User Variable' as RPM
 
@@ -173,7 +173,7 @@ For maximal speed: "u 200"
 This is exactly what I was looking for.
 
 
-## Calculating the RMP/Frequency Ratio
+## Calculating the RPM/Frequency Ratio
 
 The approximated ratio between RPM and motor Frequency, while ignoring 'slip' is:
 
