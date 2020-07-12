@@ -243,7 +243,7 @@ For more details see this short article on [Using a Stroboscope to Measure RPM][
 
 The optional braking resistor consumes the regenerating energy of the motor and shorten the ramp-down time.
 
-The braking resistor can be connected to the '+DB-' connectors of the Main circuit Terminals.
+The braking resistor can be connected to the '+DB-' connectors of the Main Circuit Terminals.
 
 ### Resistor Parameters
 
@@ -268,13 +268,13 @@ Set the P00.03 program group and number to the value of 2. For details on how to
 
 ### Experiments
 
-As an experiment the following steps on were performed on a Ya Lang YL620 (200VAC, 50Hz) VFD:
+As an experiment, the following steps on were performed on a Ya Lang YL620 (200VAC, 50Hz) VFD:
 
 1. Preparations:
     - Disconnect the VFD from power
     - Connect a small (0.17A) capacitor-run single-phase induction motor (220VAC, 50Hz). For details see [Controlling a Single Phase Motor](#controlling-a-single-phase-motor)
     - Put a flag marker (e.g., small tape) on the shaft of the motor to indicate its position
-    - Connect a common 60-100W 220V incandescent light bulb to the '+DB-' connectors of the Main circuit Terminals.
+    - Connect a common 60-100W 220V incandescent light bulb directly to the '+DB-' connectors of the Main Circuit Terminals.
     - Connect the VFD to power
 2. Check Stop Time **before** using the DC Barking mode:
     - Check that the P00.03 is set to the default value of 0 
