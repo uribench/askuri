@@ -1,4 +1,8 @@
-# YL620 Variable Frequency Drive (VFD) by Ya Lang
+# YL620 Variable Frequency Drive (VFD) by Yalang
+
+Variable Frequency Drive (VFD) devices have several different names. To name few; Frequency Converter, Adjustable Speed Drive, and Frequency Inverter. Some of these names are better describing the product and others are ambiguous and therefore confusing. The YL620-A by Yalang will be referred here as VFD.
+
+This document shares guidelines and tips that are either not available or not clear in the official [English user's manual (YL620-A-Inverter-Manual.pdf)][9]. 
 
 ## Table of Content (TOC)
 
@@ -50,12 +54,12 @@ Notes:
 
 1. When this value is set for restoring the factory defaults, the Inverter will not allow any other parameters setting.
 2. For this 'Restore Factory Default' action to take effect, the Inverter has to be restarted (i.e., see Option 1 above).
-3. Not all the parameters will be restored to factory settings. The manual refer to that as "electrical parameter not included...". **TBD:** The list of the protected custom parameters needs to be verified.
+3. Not all the parameters will be restored to factory settings. The [user's manual][9] refer to that as "electrical parameter not included...". **TBD:** The list of the protected custom parameters needs to be verified.
 
 
 ## Controlling a Single Phase Motor
 
-The YL620 VFD (200VAC, 50Hz) is intended for use with a single phase input (Main Power) and three phase motor. The manual does not mention anything about supporting a single-phase motor.
+The YL620 VFD (200VAC, 50Hz) is intended for use with a single phase input (Main Power) and three phase motor. The [user's manual][9] does not mention anything about supporting a single-phase motor.
 
 However, it can be connected to a capacitor-run single-phase induction motor with appropriate ratings. 
 
@@ -247,7 +251,7 @@ The braking resistor can be connected to the '+DB-' connectors of the Main Circu
 
 ### Resistor Parameters
 
-The following recommendations are based on the user's manual (YL620-A-Inverter-Manual.pdf):
+The following recommendations are based on the [user's manual][9]:
 
 1. For inverter model YL620-1.5KW-220V, use 100W 100Ω resistor. This will support a 1.5KW motor.
 2. In order to prevent the braking resistor from burning out, please add an electromagnetic contactor and connect a surge absorber to the coil when using it.
@@ -256,7 +260,7 @@ The following recommendations are based on the user's manual (YL620-A-Inverter-M
 
 ### Programming the VFD for DC Braking
 
-Based on the user's manual (YL620-A-Inverter-Manual.pdf):
+Based on the [user's manual][9]:
 
 - Program group and number: P00.03
 - Possible Values:
@@ -268,7 +272,7 @@ Set the P00.03 program group and number to the value of 2. For details on how to
 
 ### Experiments
 
-As an experiment, the following steps on were performed on a Ya Lang YL620 (200VAC, 50Hz) VFD:
+As an experiment, the following steps on were performed on a Yalang YL620 (200VAC, 50Hz) VFD:
 
 1. Preparations:
     - Disconnect the VFD from power
@@ -325,3 +329,4 @@ The following open questions are in addition to those on the parameters excel sh
 [6]: https://monarchserver.com/Files/KB/Strobe_for_RPM.pdf?6383841973126740174
 [7]: ./images/capacitor-run_single-phase_induction_motor.jpg
 [8]: ./images/vfd-controlled_capacitor-run_single-phase_induction_motor.jpg
+[9]: https://bulkman3d.com/wp-content/uploads/2019/08/YL620-A-Inverter-Manual.pdf
