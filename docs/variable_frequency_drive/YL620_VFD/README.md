@@ -15,6 +15,7 @@ This document shares guidelines and tips that are either not available or not cl
 - [Calculating Torque](#calculating-torque)
 - [Using a Stroboscope to Measure RPM](#using-a-stroboscope-to-measure-rpm)
 - [Braking Resistor](#braking-resistor)
+- [Detachable Control Panel](#detachable-control-panel)
 - [Open Questions](#open-questions)
 
 ## Setting Parameters
@@ -296,6 +297,20 @@ The YL620 VFD supports several configurations to control the behavior of the DC 
 Note also that the over current error message `ER02` has a dedicated value of `7` indicating: "DC braking is too high. Decrease DC braking".
 
 
+## Detachable Control Panel
+
+The Detachable Control Panel of the YL620 is connected using 4-wires, uncrossed flat cable (15 cm long). The cable is connected on each end to a PCB mounted JST-XH Top Entry type pin header (2.5 mm pitch).
+
+The 4-wires are:
+
+- GND
+- A (Digital Level)
+- B (Digital Level)
+- VCC (5V)
+
+The A and B wires are the UART Tx/Rx of the [MODBUS protocol][10] using 8 control bits, 1 stop bit, no parity. This was discovered by using a Logic Analyzer (i.e., [Open Bench Logic Sniffer][11] board with [PulsView][12] software). However, it is unclear if it is a standard or modified MODBUS protocol.
+
+
 ## Open Questions
 
 The following open questions are in addition to those on the parameters excel sheet:
@@ -313,11 +328,14 @@ The following open questions are in addition to those on the parameters excel sh
 7. OPEN: What impact has the value of the number of poles (P12.02) on the performance?
    I have modified the value of the number of poles (e.g., 2, 4, 8), when the LG AirCond Fan Motor was connected, and there was no visible impact on the running speed or the torque.
 8. OPEN: How to mount the VFD next to the lathe/mill while protecting it from harmful materials?
-9. CLOSED: Can the DC Braking Resistor be disconnected while the VFD is set to support DC Brake Mode? I have tried it with a small (200VAC, 50Hz, 0.17A) capacitor-run single-phase induction motor and I have not noticed any damage to the VFD.
+9. CLOSED: Can the DC Braking Resistor be disconnected while the VFD is set to support DC Brake Mode? 
+   **Answered:** I have tried it with a small (200VAC, 50Hz, 0.17A) capacitor-run single-phase induction motor and I have not noticed any damage to the VFD.
 10. CLOSED: How many wires are used to connect the detachable panel to the VFD? There are four wires marked as VCC, B, A, and GND.
 11. CLOSED: What is the power level of the detachable panel? The VFD provides 5V-DC to the panel.
 11. OPEN: What is the protocol used to connect the detachable panel to the VFD?
 12. OPEN: Can multiple detachable panels be connected to the same VFD?
+    **Answered:** Not in its simplest mode. The MODBUS is point-to-point communication.
+13. OPEN: What is the relation between Huanyang and Yalang, and what is the difference between their VFD products?
 
 ---
 
@@ -330,3 +348,6 @@ The following open questions are in addition to those on the parameters excel sh
 [7]: ./images/capacitor-run_single-phase_induction_motor.jpg
 [8]: ./images/vfd-controlled_capacitor-run_single-phase_induction_motor.jpg
 [9]: https://bulkman3d.com/wp-content/uploads/2019/08/YL620-A-Inverter-Manual.pdf
+[10]: https://www.modbus.org/tech.php
+[11]: https://www.seeedstudio.com/Open-Workbench-Logic-Sniffer-p-612.html
+[12]: https://sigrok.org/wiki/PulseView
