@@ -1,0 +1,25 @@
+name: Publish to GitHub Pages
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [master]
+
+jobs:
+  publish:
+    name: Publish to retype branch
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v3
+
+      - name: Build site
+        uses: retypeapp/action-build@latest
+
+      - name: Publish to GitHub Pages
+        uses: retypeapp/action-github-pages@latest
+        with:
+          update-branch: true

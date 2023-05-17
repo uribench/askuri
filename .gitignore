@@ -1,5 +1,9 @@
-_site
+# Remove these if not needed
+# _site
+# /local
+
 .pyspelling.yml
+/cache
+/docs
 custom-dictionary.txt
 dictionary.dic
-/local
