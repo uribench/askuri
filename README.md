@@ -20,4 +20,4 @@ $ bundle
 ```shell
 $ op serve
 # or, without opcode:
-$ jekyll serve --port 3000 --host 0.0.0.0 --source docs
+$ retype watch

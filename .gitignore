@@ -1,5 +1,6 @@
-_site
 .pyspelling.yml
+/cache
+/docs
+/local
 custom-dictionary.txt
 dictionary.dic
-/local

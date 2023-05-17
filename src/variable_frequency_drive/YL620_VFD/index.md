@@ -72,7 +72,7 @@ It may also have a centrifugal switch that disconnects the capacitor after the m
 
 Following is a typical connection diagram of a capacitor-run single-phase induction motor:
 
-![capacitor-run single-phase induction motor][7]
+![capacitor-run single-phase induction motor](images/capacitor-run_single-phase_induction_motor.jpg)
 
 Now that we understand how typical capacitor-run single-phase induction motors are connected, we will make the connection changes required to control it using a VFD with 3-Phase output.
 
@@ -81,7 +81,7 @@ The following steps are needed in order to connect this type of motor to this VF
 - Remove the inner capacitor of the motor.
 - Connect the two windings of the motor (`starting` and `main` windings) to the U, V, and W outputs of the VFD as follows:
 
-![capacitor-run single-phase induction motor][8]
+![capacitor-run single-phase induction motor](images/vfd-controlled_capacitor-run_single-phase_induction_motor.jpg)
 
 
 ## Jog Mode
@@ -345,8 +345,6 @@ The following open questions are in addition to those on the parameters excel sh
 [4]: https://electronics.stackexchange.com/questions/346764/how-to-calculate-rpm-using-frequency
 [5]: https://www.engineeringtoolbox.com/synchronous-motor-frequency-speed-d_649.html
 [6]: https://monarchserver.com/Files/KB/Strobe_for_RPM.pdf?6383841973126740174
-[7]: ./images/capacitor-run_single-phase_induction_motor.jpg
-[8]: ./images/vfd-controlled_capacitor-run_single-phase_induction_motor.jpg
 [9]: https://bulkman3d.com/wp-content/uploads/2019/08/YL620-A-Inverter-Manual.pdf
 [10]: https://www.modbus.org/tech.php
 [11]: https://www.seeedstudio.com/Open-Workbench-Logic-Sniffer-p-612.html
